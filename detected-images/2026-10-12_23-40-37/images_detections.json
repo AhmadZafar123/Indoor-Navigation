@@ -1,0 +1,44 @@
+{
+  "image": "images.jpg",
+  "image_size": {
+    "width": 390,
+    "height": 280
+  },
+  "num_detections": 2,
+  "detections": [
+    {
+      "class_id": 8,
+      "class_name": "window",
+      "confidence": 0.5221,
+      "bbox_xyxy": [
+        36.17,
+        12.56,
+        114.48,
+        152.03
+      ],
+      "bbox_xywh": [
+        75.33,
+        82.29,
+        78.31,
+        139.47
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.4178,
+      "bbox_xyxy": [
+        0.02,
+        193.65,
+        38.47,
+        248.87
+      ],
+      "bbox_xywh": [
+        19.25,
+        221.26,
+        38.45,
+        55.22
+      ]
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "image": "gettyimages-1436398636-612x612.jpg",
+  "image_size": {
+    "width": 612,
+    "height": 408
+  },
+  "num_detections": 16,
+  "detections": [
+    {
+      "class_id": 11,
+      "class_name": "photo frame",
+      "confidence": 0.9078,
+      "bbox_xyxy": [
+        293.07,
+        160.53,
+        346.91,
+        239.38
+      ],
+      "bbox_xywh": [
+        319.99,
+        199.95,
+        53.84,
+        78.85
+      ]
+    },
+    {
+      "class_id": 3,
+      "class_name": "table",
+      "confidence": 0.8878,
+      "bbox_xyxy": [
+        233.92,
+        297.8,
+        334.51,
+        362.23
+      ],
+      "bbox_xywh": [
+        284.21,
+        330.01,
+        100.58,
+        64.43
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.8696,
+      "bbox_xyxy": [
+        0.29,
+        312.91,
+        76.33,
+        407.95
+      ],
+      "bbox_xywh": [
+        38.31,
+        360.43,
+        76.05,
+        95.04
+      ]
+    },
+    {
+      "class_id": 1,
+      "class_name": "sofa",
+      "confidence": 0.8404,
+      "bbox_xyxy": [
+        106.7,
+        246.4,
+        428.95,
+        329.86
+      ],
+      "bbox_xywh": [
+        267.83,
+        288.13,
+        322.24,
+        83.46
+      ]
+    },
+    {
+      "class_id": 8,
+      "class_name": "window",
+      "confidence": 0.7508,
+      "bbox_xyxy": [
+        458.16,
+        26.69,
+        611.22,
+        227.39
+      ],
+      "bbox_xywh": [
+        534.69,
+        127.04,
+        153.06,
+        200.7
+      ]
+    },
+    {
+      "class_id": 3,
+      "class_name": "table",
+      "confidence": 0.6665,
+      "bbox_xyxy": [
+        89.24,
+        297.56,
+        160.54,
+        383.43
+      ],
+      "bbox_xywh": [
+        124.89,
+        340.5,
+        71.3,
+        85.87
+      ]
+    },
+    {
+      "class_id": 4,
+      "class_name": "lamp",
+      "confidence": 0.6127,
+      "bbox_xyxy": [
+        60.23,
+        224.67,
+        99.54,
+        283.4
+      ],
+      "bbox_xywh": [
+        79.88,
+        254.03,
+        39.31,
+        58.74
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.5629,
+      "bbox_xyxy": [
+        527.38,
+        273.51,
+        563.15,
+        312.06
+      ],
+      "bbox_xywh": [
+        545.27,
+        292.78,
+        35.77,
+        38.55
+      ]
+    },
+    {
+      "class_id": 4,
+      "class_name": "lamp",
+      "confidence": 0.434,
+      "bbox_xyxy": [
+        122.78,
+        134.83,
+        139.24,
+        167.38
+      ],
+      "bbox_xywh": [
+        131.01,
+        151.1,
+        16.46,
+        32.55
+      ]
+    },
+    {
+      "class_id": 2,
+      "class_name": "chair",
+      "confidence": 0.4319,
+      "bbox_xyxy": [
+        89.68,
+        297.77,
+        160.89,
+        382.52
+      ],
+      "bbox_xywh": [
+        125.29,
+        340.14,
+        71.21,
+        84.75
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.4311,
+      "bbox_xyxy": [
+        0.0,
+        253.31,
+        32.79,
+        404.72
+      ],
+      "bbox_xywh": [
+        16.39,
+        329.01,
+        32.79,
+        151.41
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.3579,
+      "bbox_xyxy": [
+        34.74,
+        172.17,
+        75.91,
+        229.71
+      ],
+      "bbox_xywh": [
+        55.32,
+        200.94,
+        41.17,
+        57.53
+      ]
+    },
+    {
+      "class_id": 4,
+      "class_name": "lamp",
+      "confidence": 0.3239,
+      "bbox_xyxy": [
+        399.3,
+        201.08,
+        418.14,
+        213.18
+      ],
+      "bbox_xywh": [
+        408.72,
+        207.13,
+        18.83,
+        12.11
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.3072,
+      "bbox_xyxy": [
+        93.33,
+        226.14,
+        127.26,
+        285.48
+      ],
+      "bbox_xywh": [
+        110.3,
+        255.81,
+        33.92,
+        59.34
+      ]
+    },
+    {
+      "class_id": 4,
+      "class_name": "lamp",
+      "confidence": 0.2936,
+      "bbox_xyxy": [
+        60.07,
+        224.6,
+        100.03,
+        250.99
+      ],
+      "bbox_xywh": [
+        80.05,
+        237.8,
+        39.97,
+        26.39
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.2655,
+      "bbox_xyxy": [
+        60.42,
+        224.23,
+        98.06,
+        284.03
+      ],
+      "bbox_xywh": [
+        79.24,
+        254.13,
+        37.64,
+        59.8
+      ]
+    }
+  ]
+}

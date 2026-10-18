@@ -1,0 +1,16 @@
+path: C:\Users\Ahmed\Indoor-Navigation\Data\raw\homeobjects
+train: images/train
+val: images/val
+names:
+  0: bed
+  1: sofa
+  2: chair
+  3: table
+  4: lamp
+  5: tv
+  6: laptop
+  7: wardrobe
+  8: window
+  9: door
+  10: potted plant
+  11: photo frame

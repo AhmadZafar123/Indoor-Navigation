@@ -1,0 +1,231 @@
+{
+  "image": "gettyimages-2159352095-612x612.jpg",
+  "image_size": {
+    "width": 612,
+    "height": 340
+  },
+  "num_detections": 13,
+  "detections": [
+    {
+      "class_id": 1,
+      "class_name": "sofa",
+      "confidence": 0.8999,
+      "bbox_xyxy": [
+        83.67,
+        221.17,
+        206.83,
+        305.99
+      ],
+      "bbox_xywh": [
+        145.25,
+        263.58,
+        123.17,
+        84.82
+      ]
+    },
+    {
+      "class_id": 2,
+      "class_name": "chair",
+      "confidence": 0.8745,
+      "bbox_xyxy": [
+        223.9,
+        218.55,
+        288.62,
+        277.32
+      ],
+      "bbox_xywh": [
+        256.26,
+        247.93,
+        64.73,
+        58.77
+      ]
+    },
+    {
+      "class_id": 3,
+      "class_name": "table",
+      "confidence": 0.872,
+      "bbox_xyxy": [
+        270.68,
+        251.36,
+        369.76,
+        299.09
+      ],
+      "bbox_xywh": [
+        320.22,
+        275.22,
+        99.08,
+        47.74
+      ]
+    },
+    {
+      "class_id": 4,
+      "class_name": "lamp",
+      "confidence": 0.8605,
+      "bbox_xyxy": [
+        167.17,
+        114.3,
+        204.88,
+        140.94
+      ],
+      "bbox_xywh": [
+        186.02,
+        127.62,
+        37.71,
+        26.64
+      ]
+    },
+    {
+      "class_id": 2,
+      "class_name": "chair",
+      "confidence": 0.8436,
+      "bbox_xyxy": [
+        351.23,
+        217.63,
+        415.43,
+        276.54
+      ],
+      "bbox_xywh": [
+        383.33,
+        247.08,
+        64.2,
+        58.91
+      ]
+    },
+    {
+      "class_id": 10,
+      "class_name": "potted plant",
+      "confidence": 0.8185,
+      "bbox_xyxy": [
+        535.84,
+        204.24,
+        570.84,
+        262.93
+      ],
+      "bbox_xywh": [
+        553.34,
+        233.58,
+        35.0,
+        58.69
+      ]
+    },
+    {
+      "class_id": 7,
+      "class_name": "wardrobe",
+      "confidence": 0.7999,
+      "bbox_xyxy": [
+        20.51,
+        59.46,
+        344.42,
+        232.98
+      ],
+      "bbox_xywh": [
+        182.46,
+        146.22,
+        323.92,
+        173.53
+      ]
+    },
+    {
+      "class_id": 3,
+      "class_name": "table",
+      "confidence": 0.796,
+      "bbox_xyxy": [
+        490.94,
+        261.92,
+        542.69,
+        319.12
+      ],
+      "bbox_xywh": [
+        516.81,
+        290.52,
+        51.76,
+        57.2
+      ]
+    },
+    {
+      "class_id": 1,
+      "class_name": "sofa",
+      "confidence": 0.775,
+      "bbox_xyxy": [
+        424.27,
+        221.84,
+        551.47,
+        300.08
+      ],
+      "bbox_xywh": [
+        487.87,
+        260.96,
+        127.21,
+        78.24
+      ]
+    },
+    {
+      "class_id": 4,
+      "class_name": "lamp",
+      "confidence": 0.5454,
+      "bbox_xyxy": [
+        487.93,
+        112.49,
+        502.3,
+        129.5
+      ],
+      "bbox_xywh": [
+        495.11,
+        121.0,
+        14.38,
+        17.01
+      ]
+    },
+    {
+      "class_id": 2,
+      "class_name": "chair",
+      "confidence": 0.5053,
+      "bbox_xyxy": [
+        0.0,
+        217.46,
+        43.6,
+        287.22
+      ],
+      "bbox_xywh": [
+        21.8,
+        252.34,
+        43.6,
+        69.76
+      ]
+    },
+    {
+      "class_id": 4,
+      "class_name": "lamp",
+      "confidence": 0.3436,
+      "bbox_xyxy": [
+        324.36,
+        108.6,
+        342.29,
+        126.8
+      ],
+      "bbox_xywh": [
+        333.33,
+        117.7,
+        17.92,
+        18.2
+      ]
+    },
+    {
+      "class_id": 1,
+      "class_name": "sofa",
+      "confidence": 0.2655,
+      "bbox_xyxy": [
+        0.1,
+        217.41,
+        44.66,
+        289.39
+      ],
+      "bbox_xywh": [
+        22.38,
+        253.4,
+        44.56,
+        71.98
+      ]
+    }
+  ]
+}
