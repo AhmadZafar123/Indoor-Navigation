@@ -22,6 +22,7 @@ Output:
 
 import argparse
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -31,6 +32,12 @@ from ultralytics import YOLO
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_WEIGHTS = ROOT / "models" / "trained" / "homeobjects_baseline_v1" / "best.pt"
 DEFAULT_OUTPUT = ROOT / "detected-images"
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from src.feedbacks.tts import ObjectAnnouncer
+from src.decision.fov import FieldOfView
 
 
 def resolve_weights(path: Path) -> Path:
@@ -90,6 +97,7 @@ def run(
     iou: float,
     imgsz: int,
     save_json: bool,
+    announcer: ObjectAnnouncer | None = None,
 ) -> None:
     print(f"Loading model: {weights}")
     model = YOLO(str(weights))
@@ -103,14 +111,17 @@ def run(
 
     window_name = "Home Objects - Live Detection"
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
-    print("Camera running. Controls: q/ESC quit, s save snapshot, p pause.\n")
+    print("Camera running. Controls: q/ESC quit, s save snapshot, p pause, t toggle speech.\n")
 
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    fov = FieldOfView(width_ratio=0.4, height_ratio=0.8)
 
     frame_index = 0
     paused = False
     last_result = None
     last_annotated = None
+    detected_classes: set[str] = set()
 
     try:
         while True:
@@ -127,17 +138,41 @@ def run(
                     imgsz=imgsz,
                     verbose=False,
                 )
-                last_result = results[0]
-                last_annotated = last_result.plot()  # BGR numpy array
+                result = results[0]
+                img_height, img_width = result.orig_shape
+
+                detected_classes = set()
+                in_fov_detections: list[dict] = []
+                for box in result.boxes:
+                    if not fov.is_inside_fov(box, img_width, img_height):
+                        continue
+                    cls_id = int(box.cls.item())
+                    class_name = result.names[cls_id]
+                    detected_classes.add(class_name)
+                    in_fov_detections.append({
+                        "class_name": class_name,
+                        "confidence": float(box.conf.item()),
+                    })
+
+                last_result = result
+                annotated_frame = result.plot()  # BGR numpy array
+                last_annotated = fov.draw_fov(annotated_frame)
                 frame_index += 1
+
+                if announcer is not None:
+                    announcer.update(in_fov_detections)
 
             if last_annotated is None:
                 continue
 
             display = last_annotated.copy()
             status = "PAUSED" if paused else "LIVE"
+            speech = "ON" if announcer is not None and announcer.enabled else "OFF"
             cv2.putText(
-                display, f"{status}  frame {frame_index}", (10, 30),
+                display,
+                f"{status}  frame {frame_index}  speech {speech}  "
+                f"in-path {len(detected_classes)}",
+                (10, 30),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA,
             )
             cv2.imshow(window_name, display)
@@ -148,6 +183,8 @@ def run(
             if key == ord("p"):
                 paused = not paused
                 print("Paused." if paused else "Resumed.")
+            elif key == ord("t") and announcer is not None:
+                print("Speech on." if announcer.toggle() else "Speech off.")
             elif key == ord("s") and last_result is not None:
                 summary = detections_to_json(last_result, frame_index)
                 image_path, json_path = save_snapshot(
@@ -181,18 +218,55 @@ def main() -> None:
     parser.add_argument("--no-json", action="store_true",
                         help="Skip writing the JSON summary when saving")
 
+    parser.add_argument("--no-tts", action="store_true",
+                        help="Disable spoken object announcements")
+    parser.add_argument("--tts-conf", type=float, default=0.4,
+                        help="Minimum confidence to announce an object (default: 0.4)")
+    parser.add_argument("--tts-cooldown", type=float, default=60.0,
+                        help="Seconds before repeating an object that is still in view "
+                             "(default: 60); new objects are always announced instantly")
+    parser.add_argument("--tts-rate", type=int, default=180,
+                        help="Speech rate in words per minute")
+    parser.add_argument("--tts-voice", default=None,
+                        help="Voice name substring or index (see src/feedbacks/tts.py --list-voices)")
+    parser.add_argument("--tts-phrase", default="{name}",
+                        help="Speech template, e.g. '{name} detected'")
+
     args = parser.parse_args()
 
     weights = resolve_weights(args.weights)
-    run(
-        weights=weights,
-        output_dir=args.output_dir,
-        camera=args.camera,
-        conf=args.conf,
-        iou=args.iou,
-        imgsz=args.imgsz,
-        save_json=not args.no_json,
-    )
+
+    voice = args.tts_voice
+    if isinstance(voice, str) and voice.isdigit():
+        voice = int(voice)
+
+    announcer = None
+    if not args.no_tts:
+        announcer = ObjectAnnouncer(
+            min_confidence=args.tts_conf,
+            cooldown=args.tts_cooldown,
+            rate=args.tts_rate,
+            voice=voice,
+            phrase=args.tts_phrase,
+        )
+        print(f"Speech feedback on (press 't' to mute). "
+              f"New objects announced instantly; repeated after "
+              f"{args.tts_cooldown:g}s while still in view.")
+
+    try:
+        run(
+            weights=weights,
+            output_dir=args.output_dir,
+            camera=args.camera,
+            conf=args.conf,
+            iou=args.iou,
+            imgsz=args.imgsz,
+            save_json=not args.no_json,
+            announcer=announcer,
+        )
+    finally:
+        if announcer is not None:
+            announcer.close()
 
 
 if __name__ == "__main__":
